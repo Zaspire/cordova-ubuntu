@@ -40,6 +40,11 @@ public:
     }
 
     void setWwwDir(const QString &www) {
+        if (www.trimmed().isEmpty()) {
+            qCritical() << "Invalid empty folder value being set as the wwwDir";
+            return;
+        }
+
         assert(!m_cordova.data());
         m_cordova = QSharedPointer<Cordova>(new Cordova(QDir(www), this));
         m_wwwDir = www;
