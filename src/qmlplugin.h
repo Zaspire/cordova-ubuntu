@@ -54,6 +54,11 @@ public:
     }
 
     void setWwwDir(const QString &www) {
+        if (www.trimmed().isEmpty()) {
+            qCritical() << "Invalid empty folder value being set as the wwwDir";
+            return;
+        }
+
         _wwwDir = www;
 
         initialize();
