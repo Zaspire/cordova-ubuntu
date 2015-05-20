@@ -46,8 +46,8 @@ module.exports = {
         var name = sanitize(config.name()); //FIXME: escaping
         var content = '[Desktop Entry]\nName=' + name + '\nExec=./cordova-ubuntu www/\nTerminal=false\nType=Application\nX-Ubuntu-Touch=true';
 
-        if (config.icon() && fs.existsSync(path.join(dir, '../..', config.icon()))) {
-            Utils.cp(path.join(dir, '../..', config.icon()), path.join(dir, 'www'));
+        if (config.icon() && fs.existsSync(path.join(dir, '../..', 'www', config.icon()))) {
+            Utils.cp(path.join(dir, '../..', 'www', config.icon()), path.join(dir, 'www'));
 
             content += '\nIcon=www/' + config.icon();
         } else {
